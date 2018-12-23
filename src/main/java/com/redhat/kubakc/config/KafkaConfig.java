@@ -49,29 +49,4 @@ public class KafkaConfig {
         return factory;
 
     }
-
-//    @Bean
-//    public ConsumerFactory<String, Square> squareConsumerFactory() {
-//        Map<String, Object> config = new HashMap<>();
-//
-//        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
-//        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group1");
-//        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-//        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-//        config.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
-//
-//        return new DefaultKafkaConsumerFactory<>(
-//                config,
-//                new StringDeserializer(),
-//                new JsonDeserializer<>(Square.class)
-//        );
-//    }
-//
-//    @Bean
-//    public ConcurrentKafkaListenerContainerFactory<String, Square> squareKafkaListenerFactory() {
-//        ConcurrentKafkaListenerContainerFactory<String, Square> factory = new ConcurrentKafkaListenerContainerFactory<>();
-//        factory.setConsumerFactory(squareConsumerFactory());
-//        return factory;
-//    }
-
 }
