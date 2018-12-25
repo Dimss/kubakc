@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
     setInterval(()=>{
       $.ajax({
-            url : '/topic/state',
+            url: '/topic/state',
             processData : false,
         }).always(function(b64data){
             if (b64data.hasOwnProperty("status")){
@@ -22,4 +22,13 @@ $( document ).ready(function() {
             }
         });
     });
+
+    $.ajax({
+        url: '/metadata',
+        type: 'get',
+        success: function(result) {
+            $("#consumer-name").text(result.data.hostname);
+        }
+    });
+
 });

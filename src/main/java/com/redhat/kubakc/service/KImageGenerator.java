@@ -1,12 +1,15 @@
 package com.redhat.kubakc.service;
 
 import com.redhat.kubakp.model.Square;
+import org.apache.commons.io.FileUtils;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Base64;
 
 @Service
 public class KImageGenerator {
@@ -51,7 +54,18 @@ public class KImageGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
+    public String getBase64Image() {
+        File imageFile = getImageFile();
+        if (imageFile == null) return null;
+        byte[] fileContent = new byte[0];
+        try {
+            fileContent = FileUtils.readFileToByteArray(imageFile);
+            return Base64.getEncoder().encodeToString(fileContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 }
