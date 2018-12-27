@@ -17,9 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Configuration
 @EnableKafka
 public class KafkaConfig {
@@ -55,6 +52,5 @@ public class KafkaConfig {
         ConcurrentKafkaListenerContainerFactory<String, Square> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
-
     }
 }

@@ -66,9 +66,6 @@ public class KStateImageController {
 
     @GetMapping("/metadata")
     public ResponseEntity hostMetadata() {
-//        genericResponse.setData(new Metadata(null, metadataService.getHostname()));
-//        List<Metadata> mList = new ArrayList<>();
-//        metadataRepository.findAll().forEach(mList::add);
         return ResponseEntity
                 .ok()
                 .header("content-type", "application/json")
