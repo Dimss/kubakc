@@ -5,6 +5,7 @@ import com.redhat.kubakp.model.Square;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,8 @@ public class Consumer {
     @Autowired
     KImageGenerator kImageGenerator;
 
-    @KafkaListener(topics = "t10", groupId = "group1")
-    public void consumeJson(Square square) {
+    @KafkaListener(topics = "t10")
+    public void consumeSquare(Square square) {
         logger.info("Consumed Message: " + square.toString());
         kImageGenerator.setSquare(square);
         kImageGenerator.generateStateImage();
