@@ -20,15 +20,14 @@ public class Heartbeat {
     @Autowired
     MetadataRepository metadataRepository;
     @Autowired
-    Environment environment;
-    @Autowired
     KImageGenerator kImageGenerator;
 
     @Scheduled(fixedRate = 1000)
     public void heartbeat() {
-        String port = environment.getProperty("server.port");
+        String port = "8080";
         String base64Image = kImageGenerator.getBase64Image();
         Metadata m = new Metadata(metadataService.getId(), metadataService.getHostname(), port, base64Image);
+        log.info(m.toString());
         metadataRepository.save(m);
         log.info("Heartbeat record updated");
     }

@@ -51,4 +51,14 @@ public class Metadata implements Serializable {
     public void setKafkaStateImage(String kafkaStateImage) {
         this.kafkaStateImage = kafkaStateImage;
     }
+
+    @Override
+    public String toString() {
+        return "Metadata{" +
+                "id='" + id + '\'' +
+                ", hostname='" + hostname + '\'' +
+                ", serverPort='" + serverPort + '\'' +
+                ", kafkaStateImage='" + kafkaStateImage + '\'' +
+                '}';
+    }
 }
