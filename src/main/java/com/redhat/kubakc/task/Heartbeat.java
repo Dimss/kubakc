@@ -7,6 +7,7 @@ import com.redhat.kubakc.service.MetadataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -21,12 +22,13 @@ public class Heartbeat {
     MetadataRepository metadataRepository;
     @Autowired
     KImageGenerator kImageGenerator;
+    @Value("${app.service.port}")
+    String appServicePort;
 
     @Scheduled(fixedRate = 1000)
     public void heartbeat() {
-        String port = "8080";
         String base64Image = kImageGenerator.getBase64Image();
-        Metadata m = new Metadata(metadataService.getId(), metadataService.getHostname(), port, base64Image);
+        Metadata m = new Metadata(metadataService.getId(), metadataService.getHostname(), appServicePort, base64Image);
         log.info(m.toString());
         metadataRepository.save(m);
         log.info("Heartbeat record updated");
