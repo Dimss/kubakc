@@ -29,7 +29,6 @@ public class Heartbeat {
     public void heartbeat() {
         String base64Image = kImageGenerator.getBase64Image();
         Metadata m = new Metadata(metadataService.getId(), metadataService.getHostname(), appServicePort, base64Image);
-        log.info(m.toString());
         metadataRepository.save(m);
         log.info("Heartbeat record updated");
     }
