@@ -58,7 +58,6 @@ public class Metadata implements Serializable {
                 "id='" + id + '\'' +
                 ", hostname='" + hostname + '\'' +
                 ", serverPort='" + serverPort + '\'' +
-                ", kafkaStateImage='" + kafkaStateImage + '\'' +
                 '}';
     }
 }

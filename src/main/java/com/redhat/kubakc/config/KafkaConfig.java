@@ -11,6 +11,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.ContainerProperties;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.HashMap;
@@ -36,6 +37,7 @@ public class KafkaConfig {
         config.put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroupId);
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        config.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         final JsonDeserializer<Square> squareDeserializer = new JsonDeserializer<>();
         squareDeserializer.addTrustedPackages("com.redhat.kubakp.model");
 
@@ -51,6 +53,7 @@ public class KafkaConfig {
     public ConcurrentKafkaListenerContainerFactory<String, Square> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, Square> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
+        factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL);
         return factory;
     }
 }

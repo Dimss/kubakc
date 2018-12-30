@@ -6,9 +6,12 @@ public class Square {
     private int size;
     private String color;
     private int rgbColor;
+    // Metadata
+    private int partition;
+    private int offset;
 
 
-    public Square(){
+    public Square() {
 
     }
 
@@ -67,6 +70,23 @@ public class Square {
 
     public void setRgbColor(int rgbColor) {
         this.rgbColor = rgbColor;
+    }
+
+
+    public int getPartition() {
+        return partition;
+    }
+
+    public void setPartition(int partition) {
+        this.partition = partition;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
     }
 
     @Override

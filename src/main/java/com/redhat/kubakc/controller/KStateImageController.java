@@ -1,12 +1,10 @@
 package com.redhat.kubakc.controller;
 
 import com.redhat.kubakc.model.GenericResponse;
-import com.redhat.kubakc.model.Metadata;
 import com.redhat.kubakc.repository.MetadataRepository;
 import com.redhat.kubakc.service.KImageGenerator;
 import com.redhat.kubakc.service.MetadataService;
 import com.redhat.kubakp.model.Square;
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Set;
 
 @RestController
 public class KStateImageController {
