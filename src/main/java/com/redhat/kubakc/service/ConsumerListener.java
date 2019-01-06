@@ -6,6 +6,7 @@ import org.apache.kafka.common.TopicPartition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.listener.ConsumerSeekAware;
 import org.springframework.kafka.support.Acknowledgment;
@@ -21,9 +22,10 @@ public class ConsumerListener implements ConsumerSeekAware {
     private Logger logger = LoggerFactory.getLogger(KStateImageController.class);
     private ConsumerSeekCallback consumerSeekCallback;
     private Map<TopicPartition, Long> map;
-
     @Autowired
     KImageGenerator kImageGenerator;
+    @Value("${app.kafka.offset}")
+    int kafkaOffset;
 
 
     @KafkaListener(topics = "t10")
@@ -42,9 +44,11 @@ public class ConsumerListener implements ConsumerSeekAware {
 
     @Override
     public void onPartitionsAssigned(Map<TopicPartition, Long> assignments, ConsumerSeekCallback consumerSeekCallback) {
-        assignments.forEach((t, o) -> {
-            consumerSeekCallback.seek(t.topic(), t.partition(), o - 3);
-        });
+        if (kafkaOffset > 0) {
+            assignments.forEach((t, o) -> {
+                consumerSeekCallback.seek(t.topic(), t.partition(), o - kafkaOffset);
+            });
+        }
     }
 
     @Override
