@@ -1,7 +1,7 @@
 package com.redhat.kubakc.service;
 
 import com.redhat.kubakc.controller.KStateImageController;
-import com.redhat.kubakp.model.Square;
+import com.redhat.kubak.square.Square;
 import org.apache.kafka.common.TopicPartition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

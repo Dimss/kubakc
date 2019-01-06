@@ -5,7 +5,7 @@ import com.redhat.kubakc.model.Metadata;
 import com.redhat.kubakc.repository.MetadataRepository;
 import com.redhat.kubakc.service.KImageGenerator;
 import com.redhat.kubakc.service.MetadataService;
-import com.redhat.kubakp.model.Square;
+import com.redhat.kubak.square.Square;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -2,7 +2,7 @@ package com.redhat.kubakc;
 
 import com.redhat.kubakc.controller.KStateImageController;
 import com.redhat.kubakc.service.KImageGenerator;
-import com.redhat.kubakp.model.Square;
+import com.redhat.kubak.square.Square;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

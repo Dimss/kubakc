@@ -1,7 +1,7 @@
 package com.redhat.kubakc.config;
 
 
-import com.redhat.kubakp.model.Square;
+import com.redhat.kubak.square.Square;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,7 +37,7 @@ public class KafkaConfig {
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         final JsonDeserializer<Square> squareDeserializer = new JsonDeserializer<>();
-        squareDeserializer.addTrustedPackages("com.redhat.kubakp.model");
+        squareDeserializer.addTrustedPackages("com.redhat.kubak.square");
 
         return new DefaultKafkaConsumerFactory<>(
                 config,

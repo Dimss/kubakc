@@ -1,6 +1,6 @@
 package com.redhat.kubakc.service;
 
-import com.redhat.kubakp.model.Square;
+import com.redhat.kubak.square.Square;
 import org.apache.commons.io.FileUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
