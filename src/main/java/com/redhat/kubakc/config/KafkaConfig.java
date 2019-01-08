@@ -27,6 +27,8 @@ public class KafkaConfig {
     private String bootstrapServersPort;
     @Value("${kafka.consumer.group.id}")
     private String consumerGroupId;
+    @Value("${app.kafka.offset.reset}")
+    private String offsetRestConfig;
 
     @Bean
     public ConsumerFactory<String, Square> consumerFactory() {
@@ -36,6 +38,8 @@ public class KafkaConfig {
         config.put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroupId);
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, offsetRestConfig);
+
         final JsonDeserializer<Square> squareDeserializer = new JsonDeserializer<>();
         squareDeserializer.addTrustedPackages("com.redhat.kubak.square");
 
