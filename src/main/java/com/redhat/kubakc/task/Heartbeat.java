@@ -21,13 +21,13 @@ public class Heartbeat {
     MetadataRepository metadataRepository;
     @Autowired
     KImageGenerator kImageGenerator;
-    @Value("${app.service.port}")
-    String appServicePort;
+    @Value("${server.port}")
+    String serverPort;
 
     @Scheduled(fixedRate = 1000)
     public void heartbeat() {
         String base64Image = kImageGenerator.getBase64Image();
-        Metadata m = new Metadata(metadataService.getId(), metadataService.getHostname(), appServicePort, base64Image);
+        Metadata m = new Metadata(metadataService.getId(), metadataService.getHostname(), serverPort, base64Image);
         metadataRepository.save(m);
         log.info("Heartbeat record updated");
     }
